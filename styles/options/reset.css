@@ -1,0 +1,297 @@
+@import './fonst.css';
+@import './icons.css';
+@import './nav.css';
+@import './footer.css';
+
+/* Variables - Пременные
+  ========================================================================= */
+:root {
+  /* Ширина контейнера (Воодить без учета внутрених отступов) */
+  --containerWidth: 1110px;
+  /* Осноыной цвет текста */
+  --primaryColor: #c3c3c3;
+  /* Основной цвет заголовков */
+  --titleColor: #FFF7F7;
+  /* Основной шрифт текста */
+  --primaryFont: 'Manrope';
+  /* Основной шрифт Заголовков */
+  --primaryTitleFont: 'Manrope';
+  /* Цвет лого */
+  --logoColor: #eee;
+  --primaryItemColor: #08FFC8;
+  --primaryItemColorDark: #085CFF;
+  --secondaryItemColor: #DADADA;
+  --secondaryItemColorDark: #171717;
+  --blackColor: #000;
+  --gradient: linear-gradient(90deg, #2af598 0%, #009efd 100%);
+  --gradientRevers: linear-gradient(90deg, #009efd 0%, var(--primaryItemColor) 100%);
+  --animationGradient: linear-gradient(90deg, #2af598 0%, #009efd 50%, #2af598 100%);
+}
+
+/* Начальные обнуляющие стили
+  ========================================================================= */
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: var(--primaryFont);
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+  border: none;
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--titleFont);
+  color: var(--titleColor);
+}
+
+/* input[type=checkbox]{
+  display: none;
+} */
+
+*:hover,
+*:active {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  display: block;
+}
+.neon-link {
+  display: block;
+  padding: 15px 30px;
+  width: max-content;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  color: var(--white);
+  background: linear-gradient(90deg, #2AF598 0%, #009EFD 100%);
+  border-radius: 5px;
+}
+
+*:focus {
+  border: none;
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(#2AF598), to(#009EFD));
+  background: linear-gradient(180deg, #2AF598 0%, #009EFD 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+body {
+  background: var(--blackColor);
+}
+
+.container {
+  width: 100%;
+  max-width: calc(var(--containerWidth) + 30px);
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+.logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.logo>img {
+  display: block;
+  margin-right: 12.03px;
+}
+
+.logo>span {
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--logoColor);
+}
+
+/* Анимация по умолчанию
+  ========================================================================= */
+.link {
+  -webkit-transition: color 0.3s linear;
+  transition: color 0.3s linear;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: var(--primaryItemColor);
+}
+
+.link:active {
+  color: rgba(8, 255, 200, 0.5);
+}
+
+.link.disabled {
+  color: rgba(218, 218, 218, 0.2) !important;
+}
+
+.btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 15px 30px;
+  border-radius: 5px;
+  color: var(--titleColor);
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  z-index: 20;
+}
+
+.btn::before {
+  content: '';
+  -webkit-transition: left 0.3s linear, opacity 0.3s linear;
+  transition: left 0.3s linear, opacity 0.3s linear;
+  z-index: -1;
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--animationGradient);
+  cursor: pointer;
+}
+
+.btn:hover {
+  -webkit-box-shadow: 0px 0px 20px #08FFC8;
+  box-shadow: 0px 0px 20px #08FFC8;
+}
+
+.btn:hover::before {
+  left: -100%;
+}
+
+.btn:active {
+  background: rgba(8, 255, 200, 0.5);
+  -webkit-box-shadow: unset !important;
+  box-shadow: unset !important;
+}
+
+.btn:active::before {
+  opacity: 0;
+}
+
+.btn.disabled {
+  background: rgba(218, 218, 218, 0.5) !important;
+  -webkit-box-shadow: unset;
+  box-shadow: unset;
+  color: rgba(218, 218, 218, 0.8);
+}
+
+.btn.disabled::before {
+  opacity: 0 !important;
+}
+
+.btn__secondary {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  color: var(--primaryItemColor);
+  background: var(--blackColor);
+  background-clip: padding-box;
+  border-radius: 5px;
+  border: solid 2px transparent;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.btn__secondary:before {
+  content: '';
+  -webkit-filter: drop-shadow(0px 0px 4px var(--primaryItemColor));
+  filter: drop-shadow(0px 0px 4px var(--primaryItemColor));
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -2px;
+  border-radius: inherit;
+  background: var(--gradient);
+  -webkit-transition: 0.3s linear;
+  transition: 0.3s linear;
+}
+
+.btn__secondary:hover:before {
+  background: -webkit-gradient(linear, left top, right top, from(#2AF598));
+  background: linear-gradient(90deg, #2AF598);
+  -webkit-filter: drop-shadow(0px 0px 10px var(--primaryItemColor));
+  filter: drop-shadow(0px 0px 10px var(--primaryItemColor));
+}
+
+.btn__secondary:active {
+  border-color: rgba(8, 255, 200, 0.5);
+  color: rgba(8, 255, 200, 0.5);
+}
+
+.btn__secondary:active::before {
+  opacity: 0;
+}
+
+.btn__secondary.disabled {
+  border-color: rgba(218, 218, 218, 0.5) !important;
+  color: rgba(218, 218, 218, 0.5) !important;
+}
+
+.btn__secondary.disabled::before {
+  opacity: 0;
+}
+
+main.main {
+  width: 100%;
+  flex-grow: 1;
+}
